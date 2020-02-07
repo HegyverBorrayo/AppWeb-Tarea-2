@@ -1,29 +1,27 @@
-var canvas;
-var contexto;
-var img;
+var canvas,contexto,img;
 var posx = 150, posy = 60;
-var arrOrigen, arrDestino;
-var origen, destino;
-var btnMover;
-var idSw, btnConsulta;
+var btnAgregar, btnEliminar, selectOrigen, valueInput;
 
 function init() {
-    arrOrigen = ["uno", "dos", "tres", "cuatro"];
-    arrDestino = [];
-    origen = document.getElementById("origen");
-    destino = document.getElementById("destino");
-    btnMover = document.getElementById("btnMover");
-    cargaArregloSelect(arrOrigen, origen);
-    cargaArregloSelect(arrDestino, destino);
-    idSw = document.getElementById("idSW");
+    /* Canvas */
     canvas = document.getElementById("circulo");
     contexto = canvas.getContext('2d');
     img = new Image();
     img.src = 'img/circulo.png';
     img.onload = () => contexto.drawImage(img, posx, posy);
     window.addEventListener("keydown", precionaTecla, false);
-}
 
+    /* Agregar elemento */
+
+    btnAgregar = document.getElementById('btnAgregar');
+    valueInput = document.getElementById('elementAdd');
+    btnAgregar.onclick = addElement;
+
+    /* Eliminar elemento */
+    btnEliminar = document.getElementById('btnEliminar');
+    selectOrigen = document.getElementById('origen');
+    btnEliminar.onclick = deleteElement;
+}
 
 function precionaTecla(e) {
     let diff = 6;
@@ -57,13 +55,18 @@ function dibujarNave() {
     contexto.drawImage(img, posx, posy);
 }
 
-function cargaArregloSelect(arr, sel) {
-    //borraSelect(sel);
-    arr.forEach(x => {
-        let option = document.createElement("option");
-        option.text = x;
-        sel.add(option);
-    });
+function addElement(){
+    let valorAgregar = valueInput.value;
+    if (valorAgregar != "") {
+        let opt = document.createElement('option');
+        opt.appendChild( document.createTextNode(valorAgregar) );
+        opt.value = valorAgregar
+        selectOrigen.appendChild(opt);
+    }
+}
+
+function deleteElement(){
+    selectOrigen.options[selectOrigen.selectedIndex] = null;
 }
 
 init();
