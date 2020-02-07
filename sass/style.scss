@@ -1,0 +1,31 @@
+$colorLetter: #000;
+$border: 2px solid #000;
+
+.info-rectangle {
+	background: #c8c8c8;
+	padding: 5px;
+	padding-left: 0;
+}
+
+.borderStyle {
+	border: $border;
+}
+
+.inputAdd{
+	width: 100%;
+}
+
+.btn-awa {
+	-webkit-box-shadow: 5px 6px 5px 0px rgba(0,0,0,1);
+	-moz-box-shadow: 5px 6px 5px 0px rgba(0,0,0,1);
+	box-shadow: 5px 6px 5px 0px rgba(0,0,0,1);
+	width: 100%;
+}
+
+#btnAgregar {
+	margin-top: 20px;
+}
+
+#btnEliminar {
+	margin-top: 20px;
+}
